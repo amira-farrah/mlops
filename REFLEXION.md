@@ -8,3 +8,15 @@ Oui, contrairement au TP1 où model.pkl était écrasé à chaque fois. Là chaq
 
 3. Un camarade peut-il reproduire mon travail ?
 Pas complètement. Il peut récupérer le code depuis GitHub et il voit les paramètres et les versions des librairies dans chaque run. Par contre il n'aura pas mes runs (mlruns n'est pas sur git) et son environnement peut être différent. Pour ça il faudra Docker plus tard.
+
+
+## Lab 4
+
+1. How do we choose the official model?
+We use the "champion" alias in the Registry. We don't need the run id anymore, we just load models:/churn-model@champion. For me it points to version 1 (trial-3).
+
+2. How can an app use the model?
+With the API. The app sends the customer info in JSON to /predict and gets back the answer (churn 0 or 1). I tested it in Swagger and with test_api.py. When I sent a wrong age ("abc"), the API answered 422.
+
+3. What happens if we change the champion?
+We just move the alias to another version and restart the API. The code of the API stays the same. I tried it with move_alias.py: champion went to version 2 and then I put it back on version 1.
