@@ -15,6 +15,6 @@ ENV MODEL_URI=model
 # 6. Document the port used by the API (information, publishes nothing)
 EXPOSE 8000
 # 7. Command run when the container starts.
-# --host 0.0.0.0: listen on all the addresses of the container
+# --host 0.0.0.0: listen on all the container's addresses
 # (with 127.0.0.1, the API would be unreachable from outside)
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
